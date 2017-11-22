@@ -8,7 +8,7 @@
 	"schemes": [
 		"http"
 	],
-	"host": "127.0.0.1:8000",
+	"host": "test-task-simple-restfull-chat.herokuapp.com",
 	"basePath": "/api/message",
 	"paths": {
 		"/list/{id}": {
