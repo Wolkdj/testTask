@@ -13,8 +13,6 @@ var messageSchema = new Schema({
 
 messageSchema.plugin(mongoosePaginate);
 
-
-
 var Message = mongoose.model('Message', messageSchema);
 
 module.exports = Message;

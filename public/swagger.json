@@ -1,0 +1,160 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "Simple restfull chat",
+		"description": "A simple API for testtask"
+	},
+	"schemes": [
+		"http"
+	],
+	"host": "127.0.0.1:8000",
+	"basePath": "/api/message",
+	"paths": {
+		"/list/{id}": {
+			"get": {
+				"summary": "Gets a list of messages",
+				"description": "Returns a single person for its username.",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"description": "number of list",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "list of messages",
+						"schema": {
+							"type": "array",
+							"items": {
+								"properties": {
+									"id": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									},
+									"author": {
+										"type": "string"
+									},
+									"text": {
+										"type": "string"
+									},
+									"createdAt": {
+										"type": "string"
+									},
+									"updatedAt": {
+										"type": "string"
+									}
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "error",
+						"schema": {
+							"properties": {
+								"message": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/single/{id}": {
+			"get": {
+				"summary": "Gets a single message",
+				"description": "Returns a single single message by id.",
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"description": "message id",
+						"type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "A message",
+						"schema": {
+							"properties": {
+								"id": {
+									"type": "string"
+								},
+								"email": {
+									"type": "string"
+								},
+								"author": {
+									"type": "string"
+								},
+								"text": {
+									"type": "string"
+								},
+								"createdAt": {
+									"type": "string"
+								},
+								"updatedAt": {
+									"type": "string"
+								}
+							}
+						}
+					},
+					"404": {
+						"description": "message does not exists.",
+						"schema": {
+							"properties": {
+								"message": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/create": {
+			"post": {
+				"summary": "Create a message",
+				"description": "Adds a new message to the message list.",
+				"parameters": [
+					{
+						"name": "message",
+						"in": "body",
+						"description": "The message to create.",
+						"schema": {
+							"required": [
+								"email",
+								"text"
+							],
+							"properties": {
+								"author": {
+									"type": "string"
+								},
+								"text": {
+									"type": "string"
+								},
+								"email": {
+									"type": "string"
+								}
+							}
+						}
+					}
+				],
+				"responses": {
+					"204": {
+						"description": "message succesfully added."
+					},
+					"400": {
+						"description": "message couldn't have been created."
+					}
+				}
+			}
+		}
+	}
+}

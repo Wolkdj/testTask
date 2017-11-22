@@ -6,8 +6,8 @@
     },
     "test": {
         "host": "mongodb://localhost/",     
-        "database": "testTaskDbDev",
-        "pageSize":5
+        "database": "testTaskDbTest",
+        "pageSize":2
     },
     "production": {
         "host": "mongodb://localhost/",     
