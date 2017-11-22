@@ -10,9 +10,8 @@
         "pageSize":2
     },
     "production": {
-        "host": "mongodb://localhost/",     
-        "database": "testTaskDbProd",
+        "host": "mongodb://KfHpqG:yXMG3vrRx4iI@ds117956.mlab.com:17956/",     
+        "database": "test-task",
         "pageSize":10
     }
   }
-  

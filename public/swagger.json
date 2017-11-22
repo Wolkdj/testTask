@@ -21,7 +21,7 @@
 						"in": "path",
 						"required": true,
 						"description": "number of list",
-						"type": "string"
+						"type": "integer"
 					}
 				],
 				"responses": {
