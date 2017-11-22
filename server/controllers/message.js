@@ -31,14 +31,14 @@ module.exports = {
                 if (result.docs)
                     res.status(200).json(result.docs)
                 else
-                    res.status(201).json({message:"no more messages"}) 
+                    res.status(500).json({message:"no more messages"}) 
             })
             .catch((err) => {
                 res.status(500).send({message:"db error"})
             });
         }
         else
-            res.status(201).json({message:"incorrect id"})
+            res.status(400).json({message:"incorrect id"})
     },
     single(req, res)
     {
@@ -46,26 +46,23 @@ module.exports = {
             Message.findById(req.params.id)
             .then((message) => {
                 if(message) res.status(200).json(message)
-                else res.status(201).json({message:"wrong id"})
+                else res.status(400).json({message:"wrong id"})
             })
             .catch((err) => {
                 res.status(500).send({error:"db error"})
             })
         }
         else
-            res.status(200).json({message:"incorrect id"})
+            res.status(400).json({message:"incorrect id"})
     },
     validation(req, res, next){
-        if(req.body.email&&req.body.text)
-            console.log(typeof req.body.email)
         if(req.body.email&&req.body.text&&(typeof req.body.email === "string") && (typeof req.body.text === "string")){
-            if (!validator.isEmail(req.body.email)) res.status(201).json({message:"wrong email"})
-            else if (validator.isEmpty(req.body.text) || req.body.text.length > 100) res.status(201).json({message:"wrong text"})
+            if (!validator.isEmail(req.body.email)) res.status(400).json({message:"wrong email"})
+            else if (validator.isEmpty(req.body.text) || req.body.text.length > 100) res.status(400).json({message:"wrong text"})
             else next()
         }
         else {
-            console.log("right way")
-            res.status(201).json({message:"incorrect message"})
+            res.status(400).json({message:"incorrect message"})
         }
     }
 }
