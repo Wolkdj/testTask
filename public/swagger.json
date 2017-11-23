@@ -14,7 +14,7 @@
 		"/list/{id}": {
 			"get": {
 				"summary": "Gets a list of messages",
-				"description": "Returns a single person for its username.",
+				"description": "Returns a array of messages, paging by 10.",
 				"parameters": [
 					{
 						"name": "id",
@@ -53,7 +53,7 @@
 							}
 						}
 					},
-					"404": {
+					"400": {
 						"description": "error",
 						"schema": {
 							"properties": {
@@ -105,7 +105,7 @@
 							}
 						}
 					},
-					"404": {
+					"400": {
 						"description": "message does not exists.",
 						"schema": {
 							"properties": {
@@ -147,7 +147,7 @@
 					}
 				],
 				"responses": {
-					"204": {
+					"200": {
 						"description": "message succesfully added."
 					},
 					"400": {
